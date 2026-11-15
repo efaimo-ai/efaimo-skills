@@ -120,15 +120,16 @@ SEP links, is in `references/changes.md`.
    `requestState` comes back through the client, so treat it as attacker
    controlled: if it affects authorization, resource access or business
    logic, seal it (HMAC or AEAD) and bind it to the principal, a short expiry
-   and the original request. Details in `references/changes.md`; the rule is
-   https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr
+   and the original request. Details in `references/changes.md`, and the rule
+   itself: https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr
 7. **Replace cross-call state with server-minted handles** passed back as
    ordinary tool arguments. Nothing may live in a session.
 8. **Move off the deprecated features** where you can: Roots, Sampling,
    Logging, and the HTTP+SSE transport if you still host it. The first three
    stay until at least the first revision released on or after 2027-07-28;
-   the next revision is planned for 2027-03-30, so in practice the one after
-   it. HTTP+SSE can go sooner. Do these last, not first.
+   the next revision is planned for 2027-03-30 (source in `references/sdks.md`),
+   so in practice the one after it. HTTP+SSE can go sooner. Do these last, not
+   first.
 
 ## Step 3: prove it, twice
 
