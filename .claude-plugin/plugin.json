@@ -1,0 +1,28 @@
+{
+  "name": "efaimo-skills",
+  "displayName": "efaimo skills",
+  "version": "0.1.0",
+  "description": "Seven Agent Skills for work an agent reports as done: watch a green check fail before trusting it, read back a write that reported success, find every stale copy of a changed fact, keep public copy to what users can install, draw charts whose shapes match the numbers, count what a passing check examined, and migrate an MCP server to the 2026-07-28 stateless spec.",
+  "author": {
+    "name": "efaimo ai",
+    "email": "hello@efaimo.ai",
+    "url": "https://efaimo.com"
+  },
+  "homepage": "https://efaimo.com/skills",
+  "repository": "https://github.com/efaimo-ai/efaimo-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "verification",
+    "testing",
+    "ci",
+    "release",
+    "documentation",
+    "data-visualization",
+    "mcp",
+    "agent-skills"
+  ],
+  "icon": "./icon.png",
+  "documentationUrl": "https://github.com/efaimo-ai/efaimo-skills#readme",
+  "supportUrl": "https://github.com/efaimo-ai/efaimo-skills/issues",
+  "privacyPolicyUrl": "https://efaimo.com/privacy"
+}

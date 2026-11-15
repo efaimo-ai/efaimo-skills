@@ -1,0 +1,114 @@
+---
+name: read-it-back
+description: Use right after a shell command or a script wrote or changed a file, and before running anything that depends on it - sed -i, perl -pi, a heredoc, echo or Set-Content redirection, python -c, node -e, a bulk find-and-replace, a codemod, a generator. Exit code 0 does not say the bytes landed, because the shell expands backticks, $ and backslashes inside the payload and a replacement that matches nothing still succeeds. Skip it after an edit tool that already fails on a missing match.
+license: Apache-2.0
+metadata:
+  version: "0.1.0"
+  homepage: "https://efaimo.com"
+  verified_against: "2026-09-03"
+---
+
+# read-it-back
+
+**A write that succeeded may never have applied, or may have applied something
+other than what you wrote.** A failed write leaves you an exit code of 0, a
+success line you printed yourself, and a file that has silently become
+something you did not author. Nothing in that sequence looks wrong until much
+later, when the thing you thought you fixed is still broken and you go looking
+in the wrong place, because you are certain that edit landed.
+
+This applies when the write went through a shell or a script. An edit tool that
+fails when its target string is missing has already done the checking for you.
+
+## Why a write is not a write
+
+**The shell is not a pipe. It is a compiler.** Everything on a command line is
+parsed and rewritten before your program is handed a single byte: backticks
+become command substitution, `$name` expands, backslashes fold, `!` may history
+expand, quotes are consumed, and newlines separate statements. From the shell's
+own point of view it did exactly what it was told, so it reports success. Your
+payload arrives modified and nobody says so.
+
+The second mechanism needs no shell at all. **A replacement that matches nothing
+is not an error to most tools.** `sed -i`, `perl -pi`, and a plain
+`text.replace(old, new)` all exit 0 and return happily when the pattern was
+never there. So does an edit aimed at a file that has moved. "I replaced it" and
+"there was nothing to replace" are the same output, which is the same shape as
+the vacuous pass that `red-before-green` is about, just pointed the other way.
+
+## The move
+
+1. **Make the write assert its own preconditions.** Not "replace A with B" but
+   "replace A with B, and fail unless A appears exactly the number of times I
+   expect." Zero matches is a failure, not a no-op; so is three when you meant
+   one. This single habit converts the silent miss into a stop, and it is worth
+   more than the other four together.
+
+   ```python
+   n = text.count(old)
+   if n != 1:
+       raise SystemExit(f"expected 1 occurrence of {old!r}, found {n}")
+   text = text.replace(old, new)
+   ```
+
+   With sed, count first: `grep -c 'old' file` must print the number of lines
+   you expect to change, and `0` means stop.
+2. **Keep the payload off the command line.** Write it to a file and have your
+   program read the file. A file's bytes are yours. A command line's bytes
+   belong to the shell until it decides to hand them over.
+3. **Prefer a structured edit tool where one exists.** The good ones fail loudly
+   on an absent or stale match, which is precisely the failure you are trying to
+   surface.
+4. **Read back the changed region, unless the tool already failed loudly for
+   you.** A structured edit tool that errors on an absent or stale match has
+   done this step on your behalf, and re-reading after one is wasted work. Read
+   back when the write went through a shell, a script you wrote, or anything
+   whose success line you generated yourself: the bytes on disk, at the place
+   you changed, not the exit code.
+5. **Then run the thing that depends on it.** A test, a build, a checker. The
+   read-back tells you the edit landed; this tells you it landed correctly.
+
+If a write cannot be made to fail when its target is missing, you do not have a
+write. You have a request.
+
+## The tells
+
+Be most suspicious when any of these is true.
+
+- The payload contains a backtick, `$`, a backslash, `!`, or a newline.
+- The write is one long quoted string on a command line.
+- The success message was printed by your own code rather than by the OS or the
+  tool. Your script cannot report a failure it never detected.
+- `sed -i` or `perl -pi` with no count of what matched.
+- A replace-all where you did not count occurrences before and after.
+- A heredoc inside a compound command, behind `&&` or a pipe or a subshell.
+- On a retry, the edit reports "already applied." Sometimes true. Sometimes the
+  first attempt wrote nothing and the second is matching its own absence.
+- The file is large or generated and you were never going to open it.
+- PowerShell: inside double quotes `$name` expands and the backtick is the
+  escape character. Carry a payload in a single-quoted here-string
+  (`@'` ... `'@`, closing marker at column 0). In Windows PowerShell 5.1,
+  `Set-Content` and `Add-Content` write the system code page unless you pass
+  `-Encoding utf8`.
+
+Real ones, with what each printed and how it announced itself, are in
+[references/failure-gallery.md](references/failure-gallery.md): the loud ones,
+the quiet ones that reported success and wrote something else, and the ones that
+are correct on your machine and corrupt on a colleague's.
+
+## Scope
+
+Keep using the shell to move, copy and run things. The habit is for the moment
+it carries bytes you are authoring, and for any write whose only report is an
+exit code.
+
+<!-- generated:siblings -->
+
+## Siblings
+
+Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
+
+- `red-before-green` - the instrument half of the same problem: a check that passed may never have checked.
+- `claim-sweep` - once the write does land, find every other artifact still asserting what it changed.
+
+<!-- /generated:siblings -->
