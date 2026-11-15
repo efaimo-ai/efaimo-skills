@@ -3,9 +3,7 @@ name: claim-sweep
 description: Use after a fact about a project has changed, to find every place that still states the old value - a version, price, limit, count, supported platform, default, endpoint, command or product name, left behind in docs and site copy, help text, tests and fixtures, screenshots and diagrams, the published package, CI checks that watched the old value, and listings you do not control. Also use when two project documents disagree about the same value, or before announcing a rename, migration or domain move. Not for dependency bumps or general fact-checking.
 license: Apache-2.0
 metadata:
-  version: "0.2.0"
   homepage: "https://efaimo.com"
-  verified_against: "2026-09-03"
 ---
 
 # claim-sweep
@@ -133,7 +131,7 @@ first, or ask.
 
 ## Siblings
 
-Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
+Every skill in this set is about a report that was true about the wrong thing.
 
 - `red-before-green` - step 5, and the reason a guard you have never watched fail is not a guard.
 - `unreleased-guard` - when the fact that changed is a version, and the gap between the tree and the registry is what made the copy wrong.

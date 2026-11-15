@@ -3,9 +3,7 @@ name: read-it-back
 description: Use right after a shell command or a script wrote or changed a file, and before running anything that depends on it - sed -i, perl -pi, a heredoc, echo or Set-Content redirection, python -c, node -e, a bulk find-and-replace, a codemod, a generator. Exit code 0 does not say the bytes landed, because the shell expands backticks, $ and backslashes inside the payload and a replacement that matches nothing still succeeds. Skip it after an edit tool that already fails on a missing match.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
   homepage: "https://efaimo.com"
-  verified_against: "2026-09-03"
 ---
 
 # read-it-back
@@ -106,7 +104,7 @@ exit code.
 
 ## Siblings
 
-Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
+Every skill in this set is about a report that was true about the wrong thing.
 
 - `red-before-green` - the instrument half of the same problem: a check that passed may never have checked.
 - `claim-sweep` - once the write does land, find every other artifact still asserting what it changed.

@@ -3,9 +3,7 @@ name: red-before-green
 description: Use before accepting a clean result as evidence - a grep or search with no matches, a test suite, linter, type-check or CI gate that passed, a validator that accepted, an empty query result, or a subagent's "no issues found". Also use when someone asks whether a passing check can be believed. Make the check fail once on an input that must fail, then trust its green. For a write that reported success use read-it-back; for how many items a passing check covered use denominator.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
   homepage: "https://efaimo.com"
-  verified_against: "2026-09-04"
 ---
 
 # red-before-green
@@ -99,7 +97,7 @@ exercising anything - see [references/failure-gallery.md](references/failure-gal
 
 ## Siblings
 
-Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
+Every skill in this set is about a report that was true about the wrong thing.
 
 - `denominator` - once the check can fail, ask how much of the world it actually looked at.
 - `read-it-back` - the same move aimed at writes rather than checks: a success that never applied.

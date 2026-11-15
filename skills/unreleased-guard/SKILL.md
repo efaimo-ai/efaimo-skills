@@ -3,9 +3,7 @@ name: unreleased-guard
 description: Use when writing or editing public docs for software whose repository is ahead of its latest published release, and when preparing a tag or a registry publish - a README, docs site, changelog entry, help text, example or captured command output. Readers install the published version, so docs written from the working tree describe flags they cannot run. Covers measuring the gap, inline "unreleased" notes and when to remove them, freezing captured output until the publish, and a check that ties docs to the released version.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
   homepage: "https://efaimo.com"
-  verified_against: "2026-09-03"
 ---
 
 # unreleased-guard
@@ -106,7 +104,7 @@ makes it safe, and step 4 is what takes it off at the right moment.
 
 ## Siblings
 
-Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
+Every skill in this set is about a report that was true about the wrong thing.
 
 - `claim-sweep` - the second half of step 6: publishing collapses the gap and every artifact quoting the old version has to be found.
 - `red-before-green` - step 5 asks for a check rather than a convention, and that check has to be watched failing first.

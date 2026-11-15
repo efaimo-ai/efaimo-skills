@@ -3,9 +3,7 @@ name: honest-chart
 description: Use when making a chart or plot from numbers, or reviewing one before it is shared - bar, line, pie, scatter, area, bubble or stacked, in SVG, HTML, matplotlib, plotly, Recharts, Vega-Lite or a spreadsheet. Catches the ways a chart misleads while every number is correct - a bar axis that skips zero, two y-axes, bubbles scaled by radius, a cherry-picked window, a rainbow scale on ordered data. Ends by reading the values back off the rendered chart and comparing them with the source. Not for diagrams without data or for library syntax questions.
 license: Apache-2.0
 metadata:
-  version: "0.1.0"
   homepage: "https://efaimo.com"
-  verified_against: "2026-09-04"
 ---
 
 # honest-chart
@@ -96,7 +94,7 @@ data is worth charting to you.
 
 ## Siblings
 
-Every skill in this set is about a report that was true about the wrong thing. The set: https://efaimo.com/skills
+Every skill in this set is about a report that was true about the wrong thing.
 
 - `red-before-green` - the general form of move 3: do not trust a clean result until you have watched it fail.
 - `read-it-back` - reading a written artifact back to see what actually landed, here applied to a rendered figure.
