@@ -1,6 +1,6 @@
 # efaimo skills
 
-Seven Agent Skills for the moment an agent says something is done. Each one turns a report like "tests pass", "file updated" or "the docs are current" into something you have checked. The plugin has no hooks and no MCP server. It holds instructions only. Nothing in it sends data anywhere by itself.
+Seven Agent Skills for the moment an agent says something is done. Each one turns a report like "tests pass", "file updated" or "the docs are current" into something you have checked. The plugin has no hooks and no MCP server. The only code in it is what denominator runs with Node, named in the table below. Nothing in it sends data anywhere by itself.
 
 ## Skills
 
@@ -8,7 +8,7 @@ Seven Agent Skills for the moment an agent says something is done. Each one turn
 |---|---|---|
 | red-before-green | a check came back clean and you are about to trust it | your own test, lint or search command, once on input broken on purpose and again after it is restored; it fetches nothing |
 | read-it-back | a tool reported a write as successful | re-reads the changed lines on disk, then runs whatever depends on them; it fetches nothing |
-| denominator | a check passed and you want to know how many things it examined | adds a count line to your check's output and keeps a baseline file in your repository; the optional ratchet tool installs from github.com/efaimo-ai/denominator |
+| denominator | a check passed and you want to know how many things it examined | adds a count line to your check's output and keeps a baseline file in your repository; to hold the count it runs `scripts/denominator.mjs` from this plugin with Node, which runs the check command you give it and fetches nothing |
 | claim-sweep | a version, number, price, date or name changed and older copies may still say the old value | text searches in your project, a look at images and captured output, and, if you want the published package checked, `npm pack <pkg>@<version>` from the npm registry |
 | unreleased-guard | you are writing a README, changelog or docs page while the code is ahead of the last release | reads your repository and looks up the version users can install, for example with `npm view <pkg> version` |
 | honest-chart | you are turning numbers into a chart | writes a self-contained SVG or HTML chart and measures the drawn shapes against the data; it fetches nothing |
