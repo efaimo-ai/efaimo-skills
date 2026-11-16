@@ -2,6 +2,17 @@
 
 Seven Agent Skills for the moment an agent says something is done. Each one turns a report like "tests pass", "file updated" or "the docs are current" into something you have checked. The plugin has no hooks and no MCP server. The only code in it is what denominator runs with Node, named in the table below. Nothing in it sends data anywhere by itself.
 
+## Install
+
+In Claude Code:
+
+```
+/plugin marketplace add efaimo-ai/efaimo-skills
+/plugin install efaimo@efaimo-ai
+```
+
+To take one skill without the plugin, use the install line in that skill's own repository.
+
 ## Skills
 
 | Skill | Use it when | What it asks Claude to run or fetch |
