@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "efaimo-ai",
+  "description": "Agent Skills from efaimo ai.",
+  "owner": {
+    "name": "efaimo ai",
+    "email": "hello@efaimo.ai",
+    "url": "https://efaimo.com"
+  },
+  "plugins": [
+    {
+      "name": "efaimo",
+      "description": "Seven Agent Skills for work an agent reports as done: watch a green check fail before trusting it, read back a write that reported success, find every stale copy of a changed fact, keep public copy to what users can install, draw charts whose shapes match the numbers, count what a passing check examined, and migrate an MCP server to the 2026-07-28 stateless spec.",
+      "version": "0.1.0",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}
