@@ -1,7 +1,7 @@
 {
   "name": "efaimo",
   "displayName": "efaimo skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Seven Agent Skills for work an agent reports as done: watch a green check fail before trusting it, read back a write that reported success, find every stale copy of a changed fact, keep public copy to what users can install, draw charts whose shapes match the numbers, count what a passing check examined, and migrate an MCP server to the 2026-07-28 stateless spec.",
   "author": {
     "name": "efaimo ai",
